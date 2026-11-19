@@ -1,0 +1,53 @@
+{
+  "_说明": "所有和机型相关的物理坐标都放在这里。换手机时只改本文件，不要改算法代码。坐标原点是屏幕左上角，单位为像素。",
+
+  "device": {
+    "serial": "",
+    "adb_path": "adb",
+    "screenshot_method": "exec_out"
+  },
+
+  "screen": {
+    "width": 720,
+    "height": 1600,
+    "_注释": "仅作默认值。运行时会用 adb shell wm size 覆盖为真机分辨率。"
+  },
+
+  "board": {
+    "grid_rows": 9,
+    "grid_cols": 7,
+    "board_top_left": [10, 540],
+    "board_bottom_right": [710, 1350],
+    "cell_inset_ratio": 0.18,
+    "_注释": "board_top_left / board_bottom_right 是棋盘外框像素。Phase 2 会用它们切网格。cell_inset_ratio 是取色时向格子中心收缩的比例，避开边框高光。"
+  },
+
+  "timing": {
+    "swipe_duration_ms": 120,
+    "swipe_duration_jitter_ms": [40, 160],
+    "action_delay_sec": [0.2, 0.8],
+    "swipe_duration_range_ms": [280, 450],
+    "coordinate_jitter_px": 5,
+    "post_swipe_wait_sec": [1.0, 1.5],
+    "dead_board_wait_sec": 1.0,
+    "invalid_board_wait_sec": 1.0,
+    "min_valid_tile_ratio": 0.15,
+    "_注释": "Phase 4 才会启用随机间隔。Phase 1 测试滑动使用 swipe_duration_ms。"
+  },
+
+  "templates": {
+    "dir": "templates",
+    "match_threshold": 0.60,
+    "buttons": {
+      "continue": "templates/continue.png",
+      "close": "templates/close.png",
+      "restart": "templates/restart.png"
+    },
+    "_注释": "Phase 5 弹窗模板。按钮小图请从真机截图裁出。"
+  },
+
+  "debug": {
+    "enabled": true,
+    "save_dir": "debug_output"
+  }
+}
